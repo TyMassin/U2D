@@ -12,13 +12,23 @@ public class PlayerMovement: MonoBehaviour
     //Jump vars
     private Rigidbody2D body;
 
+    float moveX;
     public float jumpForce = 10f;
     bool isGrounded; //Are we touching the ground?
     private string GROUND_TAG = "Ground";
 
+    private Animator anim;
+    private string WALK_ANIMATION = "Walk";
+    private string JUMP_ANIMATION = "Jump";
+
+    private SpriteRenderer spriteRen;
+
+
     private void Awake()
     {
-        body = GetComponent<Rigidbody2D>();
+       body = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        spriteRen = GetComponent<SpriteRenderer>();
     }
     void Start()
     {
@@ -30,11 +40,12 @@ public class PlayerMovement: MonoBehaviour
     {
         MovePlayer();
         PlayerJump();
+        AnimatePlayer();
     }
 
     void MovePlayer()
     {
-        float moveX = Input.GetAxis("Horizontal");
+        moveX = Input.GetAxisRaw("Horizontal");
         Vector2 pos = transform.position;
         pos.x += moveX * speed * Time.deltaTime;
         transform.position = pos;
@@ -49,7 +60,7 @@ public class PlayerMovement: MonoBehaviour
             body.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             isGrounded = false;
         }
-        
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -59,6 +70,28 @@ public class PlayerMovement: MonoBehaviour
         }
 
     }
-  
 
+    void AnimatePlayer()
+    {
+//moving to the right
+        if (moveX > 0)
+        {
+            anim.SetBool(WALK_ANIMATION, true);
+            spriteRen.flipX = false;
+        }
+
+        else if (moveX<0)
+        {
+            //we're moving left
+            anim.SetBool(WALK_ANIMATION, true);
+            spriteRen.flipX = true;
+
+        }
+
+        else
+        {
+            anim.SetBool(WALK_ANIMATION, false);
+        }
+    }
+  
 }

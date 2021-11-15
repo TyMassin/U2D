@@ -14,10 +14,12 @@ public class NPCManager : MonoBehaviour
     public float textspeed = 0.05f; //how many seconds between characters. (Lower number = faster)
     private string currentText = "";
 
-    public void sendMessage(string Message)
+    public void sendMessage(string Message, Sprite Portrait = null)
     {
         //chatLog.text = Message;
         StartCoroutine(displayText(Message));
+        if (Portrait != null)
+            NPCPortrait.sprite = Portrait;
     }
 
     IEnumerator displayText(string Message)

@@ -57,8 +57,22 @@ public class PlayerMovement: MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            
             body.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            anim.SetTrigger("Takeoff");
             isGrounded = false;
+            
+        }
+
+        if (isGrounded==true)
+        {
+            anim.SetBool("Jump", false);
+            anim.ResetTrigger("Takeoff");
+        }
+        else
+        {
+            anim.SetBool("Jump", true);
+
         }
 
     }

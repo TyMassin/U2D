@@ -18,6 +18,7 @@ public class PlayerMovement: MonoBehaviour
     private string GROUND_TAG = "Ground";
 
     private Animator anim;
+    private AudioSource jumpSound;
     private string WALK_ANIMATION = "Walk";
     private string JUMP_ANIMATION = "Jump";
 
@@ -29,6 +30,7 @@ public class PlayerMovement: MonoBehaviour
        body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRen = GetComponent<SpriteRenderer>();
+        jumpSound = GetComponent<AudioSource>();
     }
     void Start()
     {
@@ -61,6 +63,7 @@ public class PlayerMovement: MonoBehaviour
             body.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             anim.SetTrigger("Takeoff");
             isGrounded = false;
+            jumpSound.Play();
             
         }
 

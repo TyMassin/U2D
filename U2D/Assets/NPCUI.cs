@@ -43,10 +43,10 @@ public class NPCUI : MonoBehaviour
 
     private void Awake()
     {
-        DialogueTree[0] = "Yo! Hows it goin?";
-        DialogueTree[1] = "Names Jack, nice to meet you.";
-        DialogueTree[2] = "You're the drywall delivery guy right? The dropoff point is directly to the east. You can just leave it in front of the office.";
-        DialogueTree[3] = "The road is under construction so you might have to jump over some stuff. Dont worry about breaking anything or eliminating any 'obsticles' along the way.";
+        DialogueTree[0] = "Yo! How's it goin?";
+        DialogueTree[1] = "Name's Jack, nice to meet you.";
+        DialogueTree[2] = "You're the drywall delivery guy, right? The dropoff point is directly to the east. You can just leave it in front of the office.";
+        DialogueTree[3] = "The road is under construction, so you might have to jump over some stuff. Don't worry about breaking anything or eliminating any 'obstacles' along the way.";
         DialogueTree[4] = "The company will pay for the damage...";
         ImageTree[0] = Smile;
         ImageTree[1] = SmileBig;

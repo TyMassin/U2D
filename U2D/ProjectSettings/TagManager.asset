@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - NPC
   - Enemy
+  - Drywall
   layers:
   - Default
   - TransparentFX
